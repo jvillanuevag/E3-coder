@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from forms import AutorForm, CategoriaForm, PostForm, BuscarPostForm
-from models import Post
+from .forms import AutorForm, CategoriaForm, PostForm, BuscarPostForm
+from .models import Post
 
 def index(request):
     return render(request, 'core/index.html')
