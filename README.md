@@ -4,7 +4,7 @@ Este proyecto es una web estilo blog desarrollada con Django como entrega para e
 
 ##  Tecnologías usadas
 
-- Django 5.x
+- Django 5
 - HTML (herencia de plantillas)
 - SQLite (por defecto)
 - Python 3.13
