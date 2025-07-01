@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class Autor(models.Model):
     nombre = models.CharField(max_length=100)
@@ -15,8 +16,10 @@ class Categoria(models.Model):
 
 class Post(models.Model):
     titulo = models.CharField(max_length=200)
-    contenido = models.TextField()
-    fecha = models.DateField(auto_now_add=True)
+    subtitulo = models.CharField(max_length=200)
+    contenido = RichTextField()  # texto enriquecido
+    imagen = models.ImageField(upload_to='posts/', null=True, blank=True)
+    fecha = models.DateTimeField(auto_now_add=True)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
 

@@ -14,7 +14,8 @@ class CategoriaForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['titulo', 'contenido', 'autor', 'categoria']
+        fields = ['titulo', 'subtitulo', 'contenido', 'imagen', 'autor', 'categoria']
+
 
 # Formulario de búsqueda de posts
 class BuscarPostForm(forms.Form):
