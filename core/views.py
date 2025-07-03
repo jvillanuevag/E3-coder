@@ -9,9 +9,7 @@ from django.urls import reverse_lazy
 from .forms import AutorForm, CategoriaForm, PostForm, BuscarPostForm
 from .models import Post
 
-# -------------------------------
-# Vistas funcionales
-# -------------------------------
+
 
 def index(request):
     return render(request, 'core/index.html')
@@ -57,9 +55,7 @@ def buscar_post(request):
         form = BuscarPostForm()
     return render(request, "core/buscar.html", {"form": form, "resultados": resultados})
 
-# -------------------------------
-# Vistas basadas en clase (CBV) para Post
-# -------------------------------
+
 
 class PostListView(ListView):
     model = Post
@@ -88,9 +84,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'core/page_confirm_delete.html'
     success_url = reverse_lazy('pages')
 
-# -------------------------------
-# Vista About
-# -------------------------------
+
 
 class AboutView(TemplateView):
     template_name = 'core/about.html'
