@@ -21,9 +21,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),  # Aquí se conectan las rutas de la app 'core'
+    path('', include('core.urls')), 
     path('accounts/', include('accounts.urls')),
-
+    path('accounts/', include('accounts.urls')),
 ]
 
 if settings.DEBUG:
