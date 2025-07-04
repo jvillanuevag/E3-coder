@@ -1,7 +1,9 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User     
 
 class Autor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=100)
     email = models.EmailField()
 

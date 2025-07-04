@@ -19,10 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "crispy_forms",
+    "crispy_bootstrap5",
     
-    'core',         # tu app principal
-    'ckeditor',     # para texto enriquecido
-    'accounts',     # 👈 NUEVA APP DE USUARIOS
+    'core',   
+    'ckeditor',     
+    'accounts',     
 ]
 
 MIDDLEWARE = [
@@ -83,3 +85,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
