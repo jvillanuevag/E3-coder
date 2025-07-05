@@ -13,16 +13,18 @@ from .models import Post, Autor
 def index(request):
     return render(request, 'core/index.html')
 
-
 def crear_autor(request):
     if request.method == "POST":
         form = AutorForm(request.POST)
         if form.is_valid():
-            form.save()
+            autor = form.save(commit=False)
+            autor.user = request.user  # ← vincula el autor al usuario logueado
+            autor.save()
             return HttpResponse("✅ Autor guardado correctamente.")
     else:
         form = AutorForm()
     return render(request, "core/formulario.html", {"form": form, "titulo": "Nuevo Autor"})
+
 
 
 def crear_categoria(request):
@@ -79,12 +81,19 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
+        kwargs['user'] = self.request.user  # ← pasamos el usuario al formulario
         return kwargs
+
+    def form_valid(self, form):
+        # Asignar el autor automáticamente
+        autor = Autor.objects.get(user=self.request.user)
+        form.instance.autor = autor
+        return super().form_valid(form)
+
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
-    model = Post
+    model = Post    
     template_name = 'core/page_form.html'
     form_class = PostForm
     success_url = reverse_lazy('pages')
